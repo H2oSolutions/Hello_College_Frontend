@@ -112,7 +112,15 @@
             report += '<div class="test-item">';
             report += '<h3>Test 2: API Connection</h3>';
             try {
-                const response = await fetch('https://hello-college-backend.onrender.com/health');
+                const response = await fetch(
+    'https://hello-college-backend.onrender.com/api/institution/profile',
+    {
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    }
+);
                 const data = await response.json();
                 report += '<div class="result success">✅ Backend is online</div>';
                 report += '<div class="result info">📊 Status: ' + data.status + '</div>';
